@@ -1,0 +1,144 @@
+#!/bin/bash
+echo "Patching frameworks_native -> STE OMX Fix"
+cd frameworks/native
+git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_native refs/changes/52/63052/1 && git cherry-pick FETCH_HEAD
+cd ..
+echo "Patching frameworks_av -> STE Multimedia Fix"
+cd av
+git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_av refs/changes/72/62672/1 && git cherry-pick FETCH_HEAD
+cd ..
+echo "Patching frameworks_base -> Fix STE OMX"
+cd base
+git fetch http://review.cyanogenmod.org/CyanogenMod/android_frameworks_base refs/changes/77/62677/1 && git cherry-pick FETCH_HEAD
+cd ../..
+echo "Patching system_core -> STE OMX Fix + Fix shutdown/reboot bug"
+cd system/core
+git fetch http://review.cyanogenmod.org/CyanogenMod/android_system_core refs/changes/74/62674/1 && git cherry-pick FETCH_HEAD
+cd ../..
+echo "low incoming call"
+cd packages/services/Telephony
+git fetch http://review.cyanogenmod.org/CyanogenMod/android_packages_services_Telephony refs/changes/75/62675/1 && git cherry-pick FETCH_HEAD
+cd ../..
+#echo "Patching bootable_recovery -> fix compile issue - undefined reference to 'gr_maxExW'"
+#cd bootable/recovery
+#git fetch https://gerrit.omnirom.org/android_bootable_recovery refs/changes/04/5804/1 && git checkout FETCH_HEAD
+#cd ../..
+# Fix SystemUI crash - add missing statusbar image
+#echo "Patching SystemUI -> add missing status bar image"
+#cd frameworks/base/packages/SystemUI/res
+#cp drawable-xhdpi/bg_custom_header_overlay.png drawable-hdpi/
+#cd ../../../../..
+#echo "Patching frameworks_opt_telephony -> Fixes issue of numeric carrier ID being shown instead of carrier name "
+#cd frameworks/opt/telephony
+#git fetch https://github.com/Team-Exhibit/android_frameworks_opt_telephony
+#git cherry-pick d805538f6f4005c6fc3a3cdced691bcc6d9c08d8
+#cd ../../..
+#!/bin/bash
+#echo "Patching frameworks_native -> STE OMX Fix"
+#cd frameworks/native
+#git fetch https://github.com/TeamCanjica/omni_frameworks_native
+#git cherry-pick 58bfb612bc026521d43dbb80802fd2c009b034c9
+#cd ..
+#echo "Patching frameworks_av -> STE Multimedia Fix"
+#cd av
+#git fetch https://github.com/TeamCanjica/omni_frameworks_av
+#git cherry-pick 3e8e2b16811e8c060d3339869b4f85b4842c26a7
+#cd ..
+#echo "Patching frameworks_base -> Fix STE OMX"
+#cd base
+#git fetch https://github.com/TeamCanjica/android_frameworks_base
+#git cherry-pick 3826055d49ec70ab3d0e130a8e444fd334806fa5
+#cd ../..
+#echo "Patching system_core -> STE OMX Fix + Fix shutdown/reboot bug"
+#cd system/core
+#git fetch https://github.com/TeamCanjica/android_system_core
+#git cherry-pick 7bd81ee140c09066ede2ffab47da1a1c4e54e021
+#git cherry-pick b6cb91b1f70c969bb0f818a24111c0ca055be590
+#cd ../..
+#echo "low incoming call"
+#cd packages/services/Telephony
+#git fetch https://github.com/NovaFusion/android_packages_services_Telephony
+#git cherry-pick 6e18ab650a9bc6f4d16df7160569a6d45415e9ec
+#cd ../../..
+#echo "Patching bootable_recovery -> fix compile issue - undefined reference to 'gr_maxExW'"
+#cd bootable/recovery
+#git fetch https://gerrit.omnirom.org/android_bootable_recovery refs/changes/04/5804/1 && git checkout FETCH_HEAD
+#cd ../..
+# Fix SystemUI crash - add missing statusbar image
+#echo "Patching SystemUI -> add missing status bar image"
+#cd frameworks/base/packages/SystemUI/res
+#cp drawable-xhdpi/bg_custom_header_overlay.png drawable-hdpi/
+#cd ../../../../..
+#echo "Patching frameworks_opt_telephony -> Fixes issue of numeric carrier ID being shown instead of carrier name "
+#cd frameworks/opt/telephony
+#git fetch https://gerrit.omnirom.org/android_frameworks_opt_telephony refs/changes/68/6568/2 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#echo "Part 1/8 of Theme Manager"
+#cd android
+#git fetch https://gerrit.omnirom.org/android refs/changes/90/2790/5 && git cherry-pick FETCH_HEAD
+#cd ..
+#echo "Part 2/8 of Theme Manager"
+#cd build
+#git fetch https://gerrit.omnirom.org/android_build refs/changes/21/6721/4 && git cherry-pick FETCH_HEAD
+#cd ..
+#echo "Part 3/8 of Theme Manager"
+#cd external/skia
+#git fetch https://gerrit.omnirom.org/android_external_skia refs/changes/20/6720/3 && git cherry-pick FETCH_HEAD
+#cd ../..
+#echo "Part 4/8 of Theme Manager"
+#cd frameworks/base
+#git fetch https://gerrit.omnirom.org/android_frameworks_base refs/changes/08/5708/29 && git cherry-pick FETCH_HEAD
+#cd ..
+#cd native
+#echo "Part 5/8 of Theme Manager"
+#git fetch https://gerrit.omnirom.org/android_frameworks_native refs/changes/22/6722/4 && git cherry-pick FETCH_HEAD
+#cd ../..
+#echo "Part 6/8 of Theme Manager"
+#cd packages/apps/Settings
+#git fetch https://gerrit.omnirom.org/android_packages_apps_Settings refs/changes/09/5709/8 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#echo "Part 7/8 of Theme Manager"
+#cd packages/providers/MediaProvider
+#git fetch https://gerrit.omnirom.org/android_packages_providers_MediaProvider refs/changes/23/6723/1 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#echo "Part 8/8 of Theme Manager"
+#cd vendor/omni
+#git fetch https://gerrit.omnirom.org/android_vendor_omni refs/changes/88/2788/7 && git cherry-pick FETCH_HEAD
+#cd ../..
+#cd frameworks/base
+#echo "Patching frameworks_base: Floating window with multitasking"
+#git fetch https://gerrit.omnirom.org/android_frameworks_base refs/changes/80/6380/20 && git cherry-pick FETCH_HEAD
+#echo "Patching frameworks_base: implement App circle sidebar"
+#git fetch https://gerrit.omnirom.org/android_frameworks_base refs/changes/78/6378/16 && git cherry-pick FETCH_HEAD
+#echo "Patching frameworks_base: App Circle sidebar (add support floating window)"
+#git fetch https://gerrit.omnirom.org/android_frameworks_base refs/changes/15/6515/9 && git cherry-pick FETCH_HEAD
+#cd ../..
+#cd packages/apps/OmniGears
+#echo "Patching OmniGears: Implement App circle sidebar"
+#git fetch https://gerrit.omnirom.org/android_packages_apps_OmniGears refs/changes/79/6379/4 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#cd packages/apps/OmniSwitch
+#echo "OmniSwitch: Allow open app as floating window"
+#git fetch https://gerrit.omnirom.org/android_packages_apps_OmniSwitch refs/changes/61/6661/1 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#echo "Patching Smart Phone Call 1/4"
+#cd frameworks/base
+#git fetch https://gerrit.omnirom.org/android_frameworks_base refs/changes/15/6315/4 && git cherry-pick FETCH_HEAD
+#cd ../..
+#echo "Patching Smart Phone Call 2/4"
+#cd packages/apps/Mms
+#git fetch https://gerrit.omnirom.org/android_packages_apps_Mms refs/changes/07/6307/5 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#echo "Patching Smart Phone Call 3/4"
+#cd packages/apps/Dialer
+#git fetch https://gerrit.omnirom.org/android_packages_apps_Dialer refs/changes/16/6316/4 && git cherry-pick FETCH_HEAD
+#cd ../../..
+#echo "Patching Smart Phone Call 4/4"
+#cd packages/services/Telephony
+#git fetch https://gerrit.omnirom.org/android_packages_services_Telephony refs/changes/17/6317/3 && git cherry-pick FETCH_HEAD
+#cd ../..
+#cd vendor/omni
+#echo "Adding SuperSU!"
+#git fetch https://gerrit.omnirom.org/android_vendor_omni refs/changes/97/6597/1 && git cherry-pick FETCH_HEAD
+#cd ../..
+echo "Completed patches necessary!"
