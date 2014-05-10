@@ -15,4 +15,4 @@ How to build aokp for codinalte
 
 
 
-4 the start commands first do the .pull command in terminal that will download all the patchs for system for build then do the command . build/envsetup.sh && brunch codinalte to start build and make clobber if is any error the stop build good luck lol
+4 the start commands first do the . pull command in terminal that will download all the patchs for system for build then do the command . build/envsetup.sh && brunch codinalte to start build and make clobber if is any error the stop build good luck lol
